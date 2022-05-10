@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
@@ -12,6 +13,14 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+  }
+
+  savePlayerName(player: NgForm) {
+    console.log('Submit desiparado', player.value.playerName);
+    if(player.invalid) {
+      return;
+    }
+    this.navigateToGame();
   }
 
   navigateToGame() {

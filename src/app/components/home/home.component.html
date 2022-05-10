@@ -1,11 +1,24 @@
 <main class="container">
-    <div class="row">
-        <h1>Create a new player</h1>
-    </div>
-    <div class="row">
-        <input type="text">
-    </div>
-    <div class="row">
-        <button (click)="navigateToGame()">Join</button>
-    </div>
+    <h1>Create a new player</h1>
+
+    <form autocomplete="off" (ngSubmit)="savePlayerName(player)" #player="ngForm">
+            <input 
+                class="form-control"
+                [class.is-invalid]="playerName.invalid && playerName.touched"
+                type="text"
+                name="playerName"
+                ngModel
+                placeholder="Player Name"
+                required
+                minlength="3"
+                #playerName="ngModel"
+                >
+            <small 
+                *ngIf="playerName.invalid && playerName.touched"
+                class="form-text text-danger"
+                >Type at least 3 letters</small>
+
+            <button type="submit">Join</button>
+     
+    </form> 
 </main>
