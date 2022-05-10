@@ -10,6 +10,9 @@ export class GameComponent implements OnInit {
 
   playerName: string = localStorage.getItem('playerName');
   score: number = 0;
+  playerSelection: string = '';
+  computerSelection: string = '';
+  result: string = '';
 
   constructor(
     private router: Router
@@ -20,6 +23,10 @@ export class GameComponent implements OnInit {
 
   navigateToHome(){
     this.router.navigate(['home']);
+  }
+
+  setPlayerSelection(item){
+    this.playerSelection = item;
   }
 
 }

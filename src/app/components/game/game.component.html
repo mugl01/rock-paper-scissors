@@ -7,6 +7,14 @@
     </nav>
     <section>
         <div>Score: {{ score }}</div>
-        
+        <app-select-item [item]="'Papel'" (itemEventEmitter)="setPlayerSelection($event)"></app-select-item>
+        <app-select-item [item]="'Piedra'" (itemEventEmitter)="setPlayerSelection($event)"></app-select-item>
+        <app-select-item [item]="'Tijera'" (itemEventEmitter)="setPlayerSelection($event)"></app-select-item>
+        <div>
+            <p>Your selection: {{ playerSelection }}</p>
+            <p>Computer selection: {{ computerSelection }}</p>
+            <p>{{ result }}</p>
+        </div>
+        <button>Reset</button>
     </section>
 </main>
