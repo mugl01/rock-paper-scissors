@@ -8,6 +8,9 @@ import { Router } from '@angular/router';
 })
 export class GameComponent implements OnInit {
 
+  playerName: string = localStorage.getItem('playerName');
+  score: number = 0;
+
   constructor(
     private router: Router
   ) { }
