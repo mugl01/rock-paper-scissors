@@ -1,2 +1,20 @@
-<p>game works!</p>
-<p (click)="navigateToHome()">Volver</p>
+<main class="container">
+    <nav class="navbar navbar-light bg-light justify-content-between">
+        <a class="navbar-brand">Hi {{ playerName }}</a>
+        <button 
+            (click)="navigateToHome()" 
+            class="btn btn-outline-success my-2 my-sm-0" >Go back</button>
+    </nav>
+    <section>
+        <div>Score: {{ score }} / {{ totalGames }}</div>
+        <app-select-item [item]="'rock'" (itemEventEmitter)="setPlayerSelection($event)"></app-select-item>
+        <app-select-item [item]="'paper'" (itemEventEmitter)="setPlayerSelection($event)"></app-select-item>
+        <app-select-item [item]="'scissors'" (itemEventEmitter)="setPlayerSelection($event)"></app-select-item>
+        <div>
+            <p>Your selection: {{ playerSelection }}</p>
+            <p>Computer selection: {{ computerSelection }}</p>
+            <p>{{ result }}</p>
+        </div>
+        <button (click)="resetScore()">Reset</button>
+    </section>
+</main>
