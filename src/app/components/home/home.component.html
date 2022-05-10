@@ -4,7 +4,7 @@
     <form autocomplete="off" (ngSubmit)="savePlayerName(player)" #player="ngForm">
             <input 
                 class="form-control"
-                [class.is-invalid]="playerName.invalid && playerName.touched"
+                [class.is-invalid]="(playerName.invalid && playerName.touched) || (playerName.invalid && player.submitted)"
                 type="text"
                 name="playerName"
                 ngModel
@@ -14,7 +14,7 @@
                 #playerName="ngModel"
                 >
             <small 
-                *ngIf="playerName.invalid && playerName.touched"
+                *ngIf="(playerName.invalid && playerName.touched) || (playerName.invalid && player.submitted)"
                 class="form-text text-danger"
                 >Type at least 3 letters</small>
 

@@ -16,10 +16,10 @@ export class HomeComponent implements OnInit {
   }
 
   savePlayerName(player: NgForm) {
-    console.log('Submit desiparado', player.value.playerName);
     if(player.invalid) {
       return;
     }
+    localStorage.setItem('playerName', player.value.playerName)
     this.navigateToGame();
   }
 
