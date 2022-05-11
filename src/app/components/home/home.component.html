@@ -1,5 +1,9 @@
 <main class="container">
-    <h1>Create a new player</h1>
+    <nav class="navbar navbar-light bg-light">
+        <span class="navbar-text h1">
+            Create a new player
+        </span>
+      </nav>
 
     <form autocomplete="off" (ngSubmit)="savePlayerName(player)" #player="ngForm">
             <input 
@@ -18,7 +22,8 @@
                 class="form-text text-danger"
                 >Type at least 3 letters</small>
 
-            <button type="submit">Join</button>
+            <button type="submit"
+                class="btn btn-outline-success">Join</button>
      
     </form> 
 </main>

@@ -4,3 +4,12 @@ section {
     align-items: center;
     gap: 20px;
 }
+
+.score {
+    margin-top: 10px;
+}
+
+.selection {
+    display: flex;
+    justify-content: space-between;
+}
