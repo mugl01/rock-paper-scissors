@@ -16,6 +16,9 @@ export class HomeComponent implements OnInit {
   }
 
   navigateToGame(player: NgForm) {
+    if(player.invalid){
+      return;
+    }
     this.router.navigate(['game',  player.value.playerName]);
   }
 

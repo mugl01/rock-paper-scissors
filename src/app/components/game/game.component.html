@@ -7,7 +7,7 @@
     </nav>
     <section>
         <article class="score h2">
-            <p>Score: {{ score }} / {{ totalGames }}</p>
+            <p>Score: {{ score }}</p>
         </article>
         <article class="selection">
             <app-select-item [item]="'rock'" (itemEventEmitter)="setPlayerSelection($event)"></app-select-item>
