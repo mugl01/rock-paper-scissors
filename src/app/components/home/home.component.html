@@ -5,7 +5,7 @@
         </span>
       </nav>
 
-    <form autocomplete="off" (ngSubmit)="savePlayerName(player)" #player="ngForm">
+    <form autocomplete="off" (ngSubmit)="navigateToGame(player)" #player="ngForm">
             <input 
                 class="form-control"
                 [class.is-invalid]="(playerName.invalid && playerName.touched) || (playerName.invalid && player.submitted)"
