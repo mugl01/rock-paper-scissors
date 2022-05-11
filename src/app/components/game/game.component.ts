@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RockPaperScissorsService } from 'src/app/services/rock-paper-scissors.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { RockPaperScissorsService } from 'src/app/services/rock-paper-scissors.s
 })
 export class GameComponent implements OnInit {
 
-  playerName: string = localStorage.getItem('playerName');
+  playerName: string = '';
   score: number = 0;
   totalGames: number = 0;
   playerSelection: string = '';
@@ -18,10 +18,14 @@ export class GameComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private activatedRoute: ActivatedRoute,
     private rockPaperScissors: RockPaperScissorsService
   ) { }
 
   ngOnInit(): void {
+    this.activatedRoute.params.subscribe(params => {
+      this.playerName = params['name'];
+    })
   }
 
   navigateToHome(){

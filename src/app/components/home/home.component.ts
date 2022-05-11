@@ -15,16 +15,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  savePlayerName(player: NgForm) {
-    if(player.invalid) {
-      return;
-    }
-    localStorage.setItem('playerName', player.value.playerName)
-    this.navigateToGame();
-  }
-
-  navigateToGame() {
-    this.router.navigate(['game']);
+  navigateToGame(player: NgForm) {
+    this.router.navigate(['game',  player.value.playerName]);
   }
 
 }
