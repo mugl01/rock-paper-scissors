@@ -1,11 +1,13 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { Router } from '@angular/router';
 
 import { GameComponent } from './game.component';
 
 describe('GameComponent', () => {
   let component: GameComponent;
   let fixture: ComponentFixture<GameComponent>;
+  let router: Router;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -19,6 +21,7 @@ describe('GameComponent', () => {
     fixture = TestBed.createComponent(GameComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    router= TestBed.inject(Router);
   });
 
   it('should create', () => {
@@ -39,8 +42,9 @@ describe('GameComponent', () => {
   });
 
   it('set player selection', () => {
+    component.computerSelection = 'rock';
     component.setPlayerSelection('paper');
-    expect(component.result).toEqual('User won');
+    expect(typeof component.result).toEqual('string');
   });
 
   it('Call reset score when click on button', async(() => {
@@ -51,4 +55,11 @@ describe('GameComponent', () => {
       expect(component.resetScore).toHaveBeenCalled();
     });
   }));
+
+  it('should navigate to home', () => {
+    const component = fixture.componentInstance;
+    const navigateSpy = spyOn(router, 'navigate');
+    component.navigateToHome();
+    expect(navigateSpy).toHaveBeenCalledWith(['home']);
+  });
 });
