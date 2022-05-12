@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { RockPaperScissorsService } from '../../services/rock-paper-scissors.service';
@@ -47,8 +47,8 @@ describe('HomeComponent', () => {
   it('Return when form is invalid', () => {
     const player = <NgForm>{
       value: {
-          playerName: "Hello",
-          category: "World",
+          playerName: 'Hello',
+          category: 'World',
       },
       invalid: true
     };
@@ -59,8 +59,8 @@ describe('HomeComponent', () => {
   it('should navigate to game', () => {
     const player = <NgForm>{
       value: {
-          playerName: "Hello",
-          category: "World",
+          playerName: 'Hello',
+          category: 'World',
       },
       invalid: false
     };
@@ -73,5 +73,4 @@ describe('HomeComponent', () => {
 
     expect(navigateSpy).toHaveBeenCalledWith(['game', player.value.playerName]);
   });
-  
 });

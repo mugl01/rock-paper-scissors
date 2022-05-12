@@ -50,7 +50,7 @@ export class GameComponent implements OnInit {
   }
 
   setScore(result: string) {
-    if(result === 'User won') {
+    if(result === 'User wins') {
       this.score++;
     }
   }
