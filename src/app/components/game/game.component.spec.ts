@@ -21,14 +21,14 @@ describe('GameComponent', () => {
     fixture = TestBed.createComponent(GameComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    router= TestBed.inject(Router);
+    router = TestBed.inject(Router);
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('reset variables when calling resetScore', ()=> {
+  it('reset variables when calling resetScore', () => {
     component.score = 10;
     component.resetScore();
     expect(component.score).toEqual(0);
@@ -36,7 +36,7 @@ describe('GameComponent', () => {
 
   it('should increment player score when player win', () => {
     component.score = 1;
-    const userWon = 'User won';
+    const userWon = 'User wins';
     component.setScore(userWon);
     expect(component.score).toEqual(2);
   });
@@ -48,8 +48,8 @@ describe('GameComponent', () => {
   });
 
   it('Call reset score when click on button', async(() => {
-    spyOn(component,'resetScore');
-    let button = fixture.debugElement.nativeElement.querySelector('article>button');
+    spyOn(component, 'resetScore');
+    const button = fixture.debugElement.nativeElement.querySelector('article>button');
     button.click();
     fixture.whenStable().then(() => {
       expect(component.resetScore).toHaveBeenCalled();

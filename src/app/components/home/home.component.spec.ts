@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { RockPaperScissorsService } from '../../services/rock-paper-scissors.service';
@@ -37,7 +37,7 @@ describe('HomeComponent', () => {
 
   it('Call navigate to when click on button', async(() => {
     spyOn(component,'navigateToGame');
-    let button = fixture.debugElement.nativeElement.querySelector('button');
+    const button = fixture.debugElement.nativeElement.querySelector('button');
     button.click();
     fixture.whenStable().then(() => {
       expect(component.navigateToGame).toHaveBeenCalled();
@@ -47,8 +47,8 @@ describe('HomeComponent', () => {
   it('Return when form is invalid', () => {
     const player = <NgForm>{
       value: {
-          playerName: "Hello",
-          category: "World",
+          playerName: 'Hello',
+          category: 'World',
       },
       invalid: true
     };
@@ -59,19 +59,18 @@ describe('HomeComponent', () => {
   it('should navigate to game', () => {
     const player = <NgForm>{
       value: {
-          playerName: "Hello",
-          category: "World",
+          playerName: 'Hello',
+          category: 'World',
       },
       invalid: false
     };
 
     const component = fixture.componentInstance;
     const navigateSpy = spyOn(router, 'navigate');
-    let service = fixture.debugElement.injector.get(RockPaperScissorsService);
+    const service = fixture.debugElement.injector.get(RockPaperScissorsService);
     spyOn(service, 'getComputerSelection');
     component.navigateToGame(player);
 
     expect(navigateSpy).toHaveBeenCalledWith(['game', player.value.playerName]);
   });
-  
 });

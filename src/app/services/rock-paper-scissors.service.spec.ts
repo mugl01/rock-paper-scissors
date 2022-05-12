@@ -14,7 +14,7 @@ describe('RockPaperScissorsService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should return a string when calling getComputerSelection', ()=>{
+  it('should return a string when calling getComputerSelection', () => {
     const resp = service.getComputerSelection();
     expect(typeof resp ).toBe('string');
   });
@@ -36,34 +36,34 @@ describe('RockPaperScissorsService', () => {
     const playerSelection = 'rock';
     service.computerSelection = 'paper';
     const resp = service.playGame(playerSelection);
-    expect(resp).toEqual('Computer won');
+    expect(resp).toEqual('Computer wins');
   });
 
   it('should return user won  when calling playGame computer with scissor and user with rock', () => {
     const playerSelection = 'rock';
     service.computerSelection = 'scissors';
     const resp = service.playGame(playerSelection);
-    expect(resp).toEqual('User won');
+    expect(resp).toEqual('User wins');
   });
 
   it('should return computer won  when calling playGame computer with scissors and user with paper', () => {
     const playerSelection = 'paper';
     service.computerSelection = 'scissors';
     const resp = service.playGame(playerSelection);
-    expect(resp).toEqual('Computer won');
+    expect(resp).toEqual('Computer wins');
   });
 
   it('should return computer won  when calling playGame computer with rock and user with scissors', () => {
     const playerSelection = 'scissors';
     service.computerSelection = 'rock';
     const resp = service.playGame(playerSelection);
-    expect(resp).toEqual('Computer won');
+    expect(resp).toEqual('Computer wins');
   });
 
   it('should return user won  when calling playGame computer with paper and user with scissors', () => {
     const playerSelection = 'scissors';
     service.computerSelection = 'paper';
     const resp = service.playGame(playerSelection);
-    expect(resp).toEqual('User won');
+    expect(resp).toEqual('User wins');
   });
 });

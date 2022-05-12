@@ -6,49 +6,37 @@ import { Injectable } from '@angular/core';
 export class RockPaperScissorsService {
 
   computerSelection: string = '';
-  playerSelection: string = '';
+  options:string[] = ['rock', 'paper', 'scissors'];
 
   constructor() { }
 
   getComputerSelection() {
-    const numberChoise = Math.floor(Math.random() * 3);
-    switch(numberChoise){
-      case 0:
-        this.computerSelection = 'rock';
-        return this.computerSelection;
-      case 1:
-        this.computerSelection = 'paper';
-        return this.computerSelection;
-      case 2:
-        this.computerSelection = 'scissors';
-        return this.computerSelection;
-    }
+    const numberChoice = Math.floor(Math.random() * this.options.length);
+    this.computerSelection = this.options[numberChoice];
+    return this.computerSelection;
   }
 
   playGame(playerSelection: string){
-    if(playerSelection === this.computerSelection) {
-      return 'Tie'
+    const tie = 'Tie';
+    const computerWins = 'Computer wins';
+    const userWins = 'User wins';
+
+    const choice1 = this.options.indexOf(playerSelection);
+    const choice2 = this.options.indexOf(this.computerSelection);
+
+    if (choice1 === choice2) {
+      return tie;
     }
-    if(playerSelection === 'rock'){
-      if(this.computerSelection === 'paper') {
-        return 'Computer won';
-      }else {
-        return 'User won'
-      }
+    if (choice1 === this.options.length - 1 && choice2 === 0) {
+        return computerWins;
     }
-    if(playerSelection === 'paper') {
-      if(this.computerSelection === 'scissors') {
-        return 'Computer won';
-      } else {
-        return 'User won';
-      }
+    if (choice2 === this.options.length - 1 && choice1 === 0) {
+        return userWins;
     }
-    if(playerSelection === 'scissors') {
-      if(this.computerSelection === 'rock') {
-        return 'Computer won'
-      } else {
-        return 'User won'
-      }
+    if (choice1 > choice2) {
+        return userWins;
+    } else {
+        return computerWins;
     }
   }
 

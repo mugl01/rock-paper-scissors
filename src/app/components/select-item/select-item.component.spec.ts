@@ -25,7 +25,7 @@ describe('SelectItemComponent', () => {
 
   it('Call send item when click on button', async(() => {
     spyOn(component,'sendItem');
-    let button = fixture.debugElement.nativeElement.querySelector('button');
+    const button = fixture.debugElement.nativeElement.querySelector('button');
     button.click();
     fixture.whenStable().then(() => {
       expect(component.sendItem).toHaveBeenCalled();
@@ -34,7 +34,7 @@ describe('SelectItemComponent', () => {
 
   it('Emit event when click on button', async(() => {
     spyOn(component,'sendItem');
-    let button = fixture.debugElement.nativeElement.querySelector('button');
+    const button = fixture.debugElement.nativeElement.querySelector('button');
     let newString = 'paper';
     component.itemEventEmitter.subscribe( item => newString = item);
     button.click();

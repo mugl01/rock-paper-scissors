@@ -18,46 +18,58 @@ export class GameComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private rockPaperScissors: RockPaperScissorsService
+    private rockPaperScissorsService: RockPaperScissorsService
   ) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       this.playerName = params['name'];
     });
-    let getPlayers = JSON.parse(localStorage.getItem('players'));
+    const getPlayers = JSON.parse(localStorage.getItem('players'));
     for(let player in getPlayers) {
       if(player === this.playerName) {
         this.score = getPlayers[player];
       }
-    } 
+    }
   }
 
   navigateToHome(){
-    let getPlayers = JSON.parse(localStorage.getItem('players')) || {};
-    getPlayers[this.playerName]= this.score;
-    localStorage.setItem('players', JSON.stringify(getPlayers));
+    this.saveCurrentGame();
     this.router.navigate(['home']);
   }
 
   setPlayerSelection(item: string){
-    this.computerSelection = this.rockPaperScissors.getComputerSelection()
+    this.resetSelections();
     this.playerSelection = item;
-    this.result = this.rockPaperScissors.playGame(this.playerSelection);
-    this.setScore(this.result);
+    setTimeout(() => {
+      this.computerSelection = this.rockPaperScissorsService.getComputerSelection();
+      this.result = this.rockPaperScissorsService.playGame(this.playerSelection);
+      this.setScore(this.result);
+    }, 1000);
+    this.saveCurrentGame();
   }
 
   setScore(result: string) {
-    if(result === 'User won') {
+    if(result === 'User wins') {
       this.score++;
     }
   }
 
   resetScore() {
     this.score = 0;
+    this.resetSelections();
+  }
+
+  resetSelections() {
     this.playerSelection = '';
     this.computerSelection = '';
     this.result = '';
+  }
+
+  saveCurrentGame() {
+    const getPlayers = JSON.parse(localStorage.getItem('players')) || {};
+    getPlayers[this.playerName]= this.score;
+    localStorage.setItem('players', JSON.stringify(getPlayers));
   }
 
 }
