@@ -37,7 +37,7 @@ describe('HomeComponent', () => {
 
   it('Call navigate to when click on button', async(() => {
     spyOn(component,'navigateToGame');
-    let button = fixture.debugElement.nativeElement.querySelector('button');
+    const button = fixture.debugElement.nativeElement.querySelector('button');
     button.click();
     fixture.whenStable().then(() => {
       expect(component.navigateToGame).toHaveBeenCalled();
@@ -67,7 +67,7 @@ describe('HomeComponent', () => {
 
     const component = fixture.componentInstance;
     const navigateSpy = spyOn(router, 'navigate');
-    let service = fixture.debugElement.injector.get(RockPaperScissorsService);
+    const service = fixture.debugElement.injector.get(RockPaperScissorsService);
     spyOn(service, 'getComputerSelection');
     component.navigateToGame(player);
 

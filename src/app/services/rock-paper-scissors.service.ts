@@ -8,32 +8,25 @@ export class RockPaperScissorsService {
   computerSelection: string = '';
   playerSelection: string = '';
 
+
   constructor() { }
 
   getComputerSelection() {
-    const numberChoise = Math.floor(Math.random() * 3);
-    switch(numberChoise){
-      case 0:
-        this.computerSelection = 'rock';
-        return this.computerSelection;
-      case 1:
-        this.computerSelection = 'paper';
-        return this.computerSelection;
-      case 2:
-        this.computerSelection = 'scissors';
-        return this.computerSelection;
-    }
+    const options = ['rock', 'paper', 'scissors'];
+    const numberChoice = Math.floor(Math.random() * options.length);
+    this.computerSelection = options[numberChoice];
+    return this.computerSelection;
   }
 
   playGame(playerSelection: string){
     if(playerSelection === this.computerSelection) {
-      return 'Tie'
+      return 'Tie';
     }
     if(playerSelection === 'rock'){
       if(this.computerSelection === 'paper') {
         return 'Computer won';
       }else {
-        return 'User won'
+        return 'User won';
       }
     }
     if(playerSelection === 'paper') {
@@ -45,9 +38,9 @@ export class RockPaperScissorsService {
     }
     if(playerSelection === 'scissors') {
       if(this.computerSelection === 'rock') {
-        return 'Computer won'
+        return 'Computer won';
       } else {
-        return 'User won'
+        return 'User won';
       }
     }
   }

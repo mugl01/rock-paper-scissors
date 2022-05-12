@@ -49,7 +49,7 @@ describe('GameComponent', () => {
 
   it('Call reset score when click on button', async(() => {
     spyOn(component,'resetScore');
-    let button = fixture.debugElement.nativeElement.querySelector('article>button');
+    const button = fixture.debugElement.nativeElement.querySelector('article>button');
     button.click();
     fixture.whenStable().then(() => {
       expect(component.resetScore).toHaveBeenCalled();
